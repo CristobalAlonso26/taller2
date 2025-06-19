@@ -16,13 +16,19 @@ public class JuegoVersus {
 
     public void jugar(){
         for (int i = 0; i < rondasMax; i++){
+            System.out.println("\nRonda " + (i+1));
             jugador1.jugar();
+            delay();
             jugador2.jugar();
-            try {
-                Thread.sleep(2000); // pausa de 2 segundos
-            } catch (InterruptedException e) {
-                e.printStackTrace();}
+            delay();
         }
+    }
+
+    private void delay() {
+        try {
+            Thread.sleep(1000); // pausa de 2 segundos
+        } catch (InterruptedException e) {
+            e.printStackTrace();}
     }
 
 }
