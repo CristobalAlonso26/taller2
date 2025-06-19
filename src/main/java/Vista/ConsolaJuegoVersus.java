@@ -23,7 +23,7 @@ public class ConsolaJuegoVersus {
     private void ejecutarOpcionJuegoVersus(int opcion) {
         switch (opcion) {
             case 1 -> manejarJuegoVersus();
-            case 2 -> System.out.println("hola2");
+            case 2 -> manejoDeSalidaJuegoVersus();
             default -> System.out.println("Opcion invalida");
         }
     }
@@ -80,6 +80,46 @@ public class ConsolaJuegoVersus {
             System.out.println("El ganador es el jugador " + jugador2.getNombre());
         }else {
             System.out.println("Empate");
+        }
+    }
+
+    public boolean confirmarSalidaJuegoVersus() {
+        boolean entradaValida = false;
+
+        while (!entradaValida) {
+            try {
+                System.out.print("¿Seguro que desea salir? (S/N): ");
+                String respuesta = sc.nextLine().trim();
+
+                if (respuesta.isEmpty()) {
+                    throw new IllegalArgumentException("La respuesta no puede estar vacía");
+                }
+
+                if (!respuesta.equalsIgnoreCase("s") && !respuesta.equalsIgnoreCase("n")) {
+                    throw new IllegalArgumentException("Por favor, ingrese 'S' para sí o 'N' para no");
+                }
+
+                entradaValida = true;
+
+                if (respuesta.equalsIgnoreCase("s")) {
+                    System.out.println("Saliendo...");
+                    return true;
+                } else {
+                    System.out.println("No se ha salido...");
+                    return false;
+                }
+
+            } catch (IllegalArgumentException e) {
+                System.out.println("Error: " + e.getMessage());
+            } catch (Exception e) {
+                System.out.println("Error inesperado. Por favor, intente nuevamente.");
+            }
+        }
+        return false;
+    }
+    private void manejoDeSalidaJuegoVersus() {
+        if (confirmarSalidaJuegoVersus()) {
+            finprograma = 1;
         }
     }
 }
