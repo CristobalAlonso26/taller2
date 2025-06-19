@@ -6,24 +6,24 @@ public class JuegoDadosConsola {
     private static Scanner sc = new Scanner(System.in);
     private JuegoDados juegoDados = new JuegoDados();
 
-    private void menu() {
+    private void menuJuegoDados() {
         int opcion;
         do {
-            mostrarOpciones();
-            opcion = obtenerOpcion(0);
-            ejecutarOpcion(opcion);
+            mostrarOpcionesJuegoDados();
+            opcion = obtenerOpcionJuegoDados(0);
+            ejecutarOpcionJuegoDados(opcion);
         } while (opcion != 2);
     }
 
-    private void ejecutarOpcion(int opcion) {
+    private void ejecutarOpcionJuegoDados(int opcion) {
         switch (opcion) {
-            case 1 -> mostrarResultado();
-            case 2 -> System.out.println("2. Salir");
+            case 1 -> mostrarResultadoJuegoDados();
+            case 2 -> System.out.println("Saliendo...");
             default -> System.out.println("Opcion invalida");
         }
     }
 
-    private int obtenerOpcion(int opcion) {
+    private int obtenerOpcionJuegoDados(int opcion) {
         try {
             opcion = Integer.parseInt(sc.nextLine());
         } catch (NumberFormatException e) {
@@ -32,11 +32,11 @@ public class JuegoDadosConsola {
         }
         return opcion;
     }
-    public void mostrarOpciones() {
+    public void mostrarOpcionesJuegoDados() {
         System.out.println("1. Lanzar dados");
         System.out.println("2. Salir");
     }
-    private void mostrarResultado() {
+    private void mostrarResultadoJuegoDados() {
         if(juegoDados.jugar()){
             System.out.println("Ganaste");
         }else{
