@@ -48,7 +48,7 @@ public class ConsolaJuegoVersus {
         jugador2 = new Jugador(sc.nextLine());
     }
     private String obtenerRondas() {
-        System.out.println("Ingrese el numero de rondas");
+        System.out.println("Ingrese el numero de rondas (1, 3, 5)");
         return sc.nextLine();
     }
     private int validarRondas(String rondas){
