@@ -18,7 +18,7 @@ public class JuegoDadosConsola {
     private void ejecutarOpcionJuegoDados(int opcion) {
         switch (opcion) {
             case 1 -> mostrarResultadoJuegoDados();
-            case 2 -> confirmarSalidaJuegoDados();
+            case 2 -> manejoDeSalidaJuegoDados();
             default -> System.out.println("Opcion invalida");
         }
     }
@@ -63,8 +63,8 @@ public class JuegoDadosConsola {
                 entradaValida = true;
 
                 if (respuesta.equalsIgnoreCase("s")) {
-                    System.out.println("Saliendo...");}
-                return true;
+                    System.out.println("Saliendo...");
+                    return true;
                 } else {
                     System.out.println("No se ha salido...");
                     return false;
@@ -76,13 +76,14 @@ public class JuegoDadosConsola {
                 System.out.println("Error inesperado. Por favor, intente nuevamente.");
             }
         }
+    return false;
     }
     private int manejoDeSalidaJuegoDados() {
-        if (confirmarSalidaJuegoDados()) {
+        if (confirmarSalidaJuegoDados(sc.nextLine())) {
             return -1;
         } else {
             return 2;
         }
     }
-
 }
+
