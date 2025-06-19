@@ -3,16 +3,17 @@ import Controlador.JuegoDados;
 import java.util.Scanner;
 
 public class JuegoDadosConsola {
-    private static Scanner sc = new Scanner(System.in);
+    private final Scanner sc = new Scanner(System.in);
     private JuegoDados juegoDados = new JuegoDados();
+    private int finprograma = 0;
 
-    private void menuJuegoDados() {
+    public void menuJuegoDados() {
         int opcion;
         do {
             mostrarOpcionesJuegoDados();
             opcion = obtenerOpcionJuegoDados(0);
             ejecutarOpcionJuegoDados(opcion);
-        } while (opcion != 2);
+        } while (finprograma == 0);
     }
 
     private void ejecutarOpcionJuegoDados(int opcion) {
@@ -44,13 +45,13 @@ public class JuegoDadosConsola {
         }
     }
 
-    public boolean confirmarSalidaJuegoDados(String respuesta) {
+    public boolean confirmarSalidaJuegoDados() {
         boolean entradaValida = false;
 
         while (!entradaValida) {
             try {
                 System.out.print("¿Seguro que desea salir? (S/N): ");
-                respuesta = sc.nextLine().trim();
+                String respuesta = sc.nextLine().trim();
 
                 if (respuesta.isEmpty()) {
                     throw new IllegalArgumentException("La respuesta no puede estar vacía");
@@ -78,11 +79,9 @@ public class JuegoDadosConsola {
         }
     return false;
     }
-    private int manejoDeSalidaJuegoDados() {
-        if (confirmarSalidaJuegoDados(sc.nextLine())) {
-            return -1;
-        } else {
-            return 2;
+    private void manejoDeSalidaJuegoDados() {
+        if (confirmarSalidaJuegoDados()) {
+            finprograma = 1;
         }
     }
 }
