@@ -37,7 +37,7 @@ public class JuegoDadosConsola {
         System.out.println("1. Lanzar dados");
         System.out.println("2. Salir");
     }
-    private void mostrarResultadoJuegoDados() {
+    public void mostrarResultadoJuegoDados() {
         int resultado = juegoDados.jugar();
         if (resultado == 7) {
             System.out.println("Ha obtenido un 7. Ha ganado el juego");
