@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class JuegoDadosConsola {
     private static Scanner sc = new Scanner(System.in);
 
-    public void menu() {
+    private void menu() {
         int opcion;
         do {
             mostrarOpciones();
@@ -14,7 +14,7 @@ public class JuegoDadosConsola {
         } while (opcion != 2);
     }
 
-    public void mostrarOpciones(int opcion) {
+    private void ejecutarOpcion(int opcion) {
         switch (opcion) {
             case 1 -> System.out.println("1. Lanzar dados");
             case 2 -> System.out.println("2. Salir");
@@ -31,4 +31,9 @@ public class JuegoDadosConsola {
         }
         return opcion;
     }
+    public void mostrarOpciones() {
+        System.out.println("1. Lanzar dados");
+        System.out.println("2. Salir");
+    }
+
 }
