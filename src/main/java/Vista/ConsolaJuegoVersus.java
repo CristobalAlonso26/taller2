@@ -1,9 +1,15 @@
 package Vista;
 
+import Controlador.JuegoVersus;
+import Modelo.Jugador;
+
 import java.util.Scanner;
 
 public class ConsolaJuegoVersus {
     private static Scanner sc = new Scanner(System.in);
+    Jugador jugador1;
+    Jugador jugador2;
+    private int finprograma = 0;
 
     public void menuJuegoVersus() {
         int opcion;
@@ -16,8 +22,8 @@ public class ConsolaJuegoVersus {
 
     private void ejecutarOpcionJuegoVersus(int opcion) {
         switch (opcion) {
-            case 1 -> mostrarResultadoJuegoVersus();
-            case 2 -> manejoDeSalidaJuegoVersus();
+            case 1 -> manejarJuegoVersus();
+            case 2 -> System.out.println("hola2");
             default -> System.out.println("Opcion invalida");
         }
     }
@@ -32,7 +38,48 @@ public class ConsolaJuegoVersus {
         return opcion;
     }
     public void mostrarOpcionesJuegoVersus() {
-        System.out.println("1. Lanzar dados");
+        System.out.println("1. iniciar juego versus");
         System.out.println("2. Salir");
+    }
+    private void obtenerJugadores() {
+        System.out.println("Ingrese el nombre del jugador 1");
+        jugador1 = new Jugador(sc.nextLine());
+        System.out.println("Ingrese el nombre del jugador 2");
+        jugador2 = new Jugador(sc.nextLine());
+    }
+    private String obtenerRondas() {
+        System.out.println("Ingrese el numero de rondas");
+        return sc.nextLine();
+    }
+    private int validarRondas(String rondas){
+        switch (rondas){
+            case "1" -> {return 1;}
+            case "3" -> {return 3;}
+            case "5" -> {return 5;}
+            default -> {
+                System.out.println("Rondas invalidas");
+                return 0;
+            }
+            }
+    }
+    private void manejarJuegoVersus(){
+        obtenerJugadores();
+        JuegoVersus juegoVersus = new JuegoVersus(jugador1, jugador2, validarRondas(obtenerRondas()));
+        juegoVersus.jugar();
+        mostrarMarcadores();
+        mostrarGanador();
+    }
+    private void mostrarMarcadores(){
+        System.out.println("El juego ha terminado");
+        System.out.println("Jugador " + jugador1.getNombre() +":" + jugador1.getPuntos());
+        System.out.println("Jugador " + jugador2.getNombre() +":" + jugador2.getPuntos());}
+    private void mostrarGanador(){
+        if(jugador1.getPuntos() > jugador2.getPuntos()){
+            System.out.println("El ganador es el jugador " + jugador1.getNombre());
+        }else if (jugador1.getPuntos() < jugador2.getPuntos()) {
+            System.out.println("El ganador es el jugador " + jugador2.getNombre());
+        }else {
+            System.out.println("Empate");
+        }
     }
 }

@@ -1,8 +1,5 @@
 package Controlador;
-
-import Modelo.Dado;
 import Modelo.Jugador;
-import Controlador.JuegoDados;
 
 public class JuegoVersus {
     private Jugador jugador1;
@@ -10,7 +7,7 @@ public class JuegoVersus {
     private int rondasMax;
 
 
-    JuegoVersus(Jugador jugador1, Jugador jugador2, int rondasMax ){
+    public JuegoVersus(Jugador jugador1, Jugador jugador2, int rondasMax ){
         this.rondasMax = rondasMax;
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;
@@ -18,23 +15,14 @@ public class JuegoVersus {
     }
 
     public void jugar(){
-        while (jugador1.getPuntos() == rondasMax || jugador2.getPuntos() == rondasMax){
+        for (int i = 0; i < rondasMax; i++){
             jugador1.jugar();
             jugador2.jugar();
+            try {
+                Thread.sleep(2000); // pausa de 2 segundos
+            } catch (InterruptedException e) {
+                e.printStackTrace();}
         }
-        mostrarMarcadores();
-        mostrarGanador();
     }
 
-    private void mostrarMarcadores(){
-        System.out.println("El juego ha terminado");
-        System.out.println("Jugador 1: " + jugador1.getPuntos());
-        System.out.println("Jugador 2: " + jugador2.getPuntos());}
-    private void mostrarGanador(){
-        if(jugador1.getPuntos() > jugador2.getPuntos()){
-            System.out.println("El ganador es el jugador " + jugador1.getNombre());
-        }else{
-            System.out.println("El ganador es el jugador " + jugador2.getNombre());
-        }
-    }
 }

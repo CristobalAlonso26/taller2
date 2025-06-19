@@ -38,10 +38,11 @@ public class JuegoDadosConsola {
         System.out.println("2. Salir");
     }
     private void mostrarResultadoJuegoDados() {
-        if(juegoDados.jugar()){
-            System.out.println("Ganaste");
-        }else{
-            System.out.println("Perdiste");
+        int resultado = juegoDados.jugar();
+        if (resultado == 7) {
+            System.out.println("Ha obtenido un 7. Ha ganado el juego");
+        } else {
+            System.out.println("Ha obtenido un " + resultado + ". No ha ganado el juego");
         }
     }
 

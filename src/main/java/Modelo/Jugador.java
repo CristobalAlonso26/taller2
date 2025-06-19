@@ -23,12 +23,13 @@ public class Jugador {
         this.puntos = puntos;
     }
     public void jugar(){
-            System.out.println("El jugador " + this.nombre + " ha jugado ");
-        if(juegoDados.jugar()){
-            System.out.println("Jugador" + this.nombre + "ha obtenido 1 punto");
+        System.out.println("\nEl jugador " + this.nombre + " ha jugado \n");
+        int resultado = juegoDados.jugar();
+        if(resultado == 7){
+            System.out.println("Jugador " + this.nombre + "ha obtenido 1 punto");
             this.puntos++;
         }else {
-            System.out.println("Jugador" + this.nombre + "no ha obtenido puntos");
+            System.out.println("Jugador " + this.nombre +" obtuvo: "+ resultado+ " no ha obtenido puntos");
         }
         }
     }

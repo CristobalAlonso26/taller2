@@ -7,13 +7,12 @@ public class JuegoDados {
         return dado1 + dado2;
     }
 
-    public Boolean jugar(){
+    public int jugar(){
     Dado dado1 = new Dado();
     Dado dado2 = new Dado();
         dado1.lanzarDado();
         dado2.lanzarDado();
-    int resultado = sumarDados(dado1.getCaraVisible(), dado2.getCaraVisible());
-    return resultado == 7;
+        return sumarDados(dado1.getCaraVisible(), dado2.getCaraVisible());
 }
 }
 
